@@ -1,4 +1,6 @@
 import pandas as pd
+import seaborn as sns
+import numpy as np
 
 class ProcessGameStrategy:
     def withinBound(filename, x1, y1, x2, y2, maxz, minz, team, side):
@@ -141,6 +143,15 @@ class ProcessGameStrategy:
                 y = y+1
             count=0
         print(final_times)
+#The following is just a sampel heatmap as I did not figure out the B site coordinates. 
+    def mapPoints(filename,team,side):
+        np.random.seed(0)
+        sns.set()
+        data = np.random.rand(10, 12)
+        #data = ProcessGameStrategy.withinBound(parquet_file, B SITE COORDINATES AS INPUTS,"Team2","T")
+        
+        ax = sns.heatmap(data, vmin=0, vmax=1)
+        plt.show()
 
 
 parquet_file = 'game_state_frame_data.parquet'
