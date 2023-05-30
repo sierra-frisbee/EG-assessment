@@ -126,15 +126,15 @@ class ProcessGameStrategy:
                     times.append(time)
                     rounds.append(round)
                     players.append(player)
-                
+        print(times)       
         #Now we need to check what the alive players have in their inventory 
         inventory = ProcessGameStrategy.getInventory(filename, team, side)
         for x, row in inventory.iterrows():
             y = 0
             while y < len(players):
+                #Checking for the gun requirements 
                 if((rounds[y] == inventory.at[x,"round"]) and players[y] == inventory.at[x,"player"]):
                     if(("Rifle" in inventory.at[x,"weapon"]) or ("SMG" in inventory.at[x,"weapon"])): 
-                        print(inventory.at[x,"weapon"])
                         count += 1
                 if (count >=2):
                     final_times.append(times[y])
@@ -145,8 +145,10 @@ class ProcessGameStrategy:
 
 parquet_file = 'game_state_frame_data.parquet'
 #print(pd.read_parquet(parquet_file, engine='auto'))
-#print(ProcessGameStrategy.withinBound(parquet_file, -1735, 250,-2472, 1233, 421, 285,"Team2","T"))
-#print(ProcessGameStrategy.getInventory(parquet_file,"Team2","T"))
+print(ProcessGameStrategy.withinBound(parquet_file, -1735, 250,-2472, 1233, 421, 285,"Team2","T"))
+print(ProcessGameStrategy.getInventory(parquet_file,"Team2","T"))
+
+#Below is the unfinished function being used to fully output the answer to Question 2B
 print(ProcessGameStrategy.averageTime(parquet_file,"Team2","T",2,"BombsiteB"))
 
 
