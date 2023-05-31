@@ -1,6 +1,7 @@
 import pandas as pd
 import seaborn as sns
 import numpy as np
+import matplotlib.pyplot as plt
 
 class ProcessGameStrategy:
     def withinBound(filename, x1, y1, x2, y2, maxz, minz, team, side):
